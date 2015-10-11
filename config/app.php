@@ -145,6 +145,8 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
         'Zizaco\Entrust\EntrustServiceProvider',
+		'AdamWathan\EloquentOAuthL5\EloquentOAuthServiceProvider',
+		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider'
 	],
 
 	/*
@@ -193,6 +195,7 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
         'Entrust'   => 'Zizaco\Entrust\EntrustFacade',
+		'SocialAuth' => 'AdamWathan\EloquentOAuth\Facades\OAuth'
 	],
 
 ];

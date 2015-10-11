@@ -41,7 +41,7 @@
             <h4 class="blue">Sign in using other accounts</h4>
             <hr><a href="/users/login/google" class="btn btn-danger btn-block btn-labeled"><span class="btn-label"><i class="fa fa-google"></i></span>Google</a><br>
             <div class="row">
-                <div class="col-md-6"><a href="/users/login/github" class="btn btn-inverse btn-block btn-labeled"><span class="btn-label"><i class="fa fa-github"></i></span>Github</a></div>
+                <div class="col-md-6"><a href="<?php echo url('github/authorize'); ?>" class="btn btn-inverse btn-block btn-labeled"><span class="btn-label"><i class="fa fa-github"></i></span>Github</a></div>
                 <div class="col-md-6"><a href="/users/login/bitbucket" class="btn btn-info btn-block btn-labeled"><span class="btn-label"><i class="fa fa-bitbucket"></i></span>Bitbucket</a></div>
             </div>
         </div>
