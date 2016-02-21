@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use DB;
 class HomeController extends Controller {
 
 	/*
@@ -30,7 +31,8 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+		$pluginCount = DB::table('plugins')->count();
+		return view('home', ['pluginCount' => $pluginCount]);
 	}
 
 }

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateServerTable extends Migration {
+class CreateServersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -14,8 +14,7 @@ class CreateServerTable extends Migration {
 	{
 		Schema::create('servers', function(Blueprint $table)
 		{
-			$table->string('uuid')->unique();
-			$table->integer('plugin_id')->unsigned();
+			$table->string('uuid');
 			$table->string('javaVersion');
 			$table->string('systemOS');
 			$table->integer('systemCores');
@@ -27,6 +26,8 @@ class CreateServerTable extends Migration {
 			$table->integer('playerCount');
 			$table->foreign('plugin_id')->references('id')->on('plugins');
 			$table->primary('uuid');
+			$table->timestamps();
+			$table->primary(['uuid']);
 		});
 	}
 
@@ -37,7 +38,7 @@ class CreateServerTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('servers');
 	}
 
 }

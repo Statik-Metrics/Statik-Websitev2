@@ -22,6 +22,9 @@ Route::controllers([
 	'ucp' => 'UCPController',
 ]);
 
+Route::resource('/api/server', 'ServerController', ['only' => 'store']);
+#Route::post('api/postReport', 'ApiController@postReport');
+
 Route::get('github/authorize', function() {
 	return SocialAuth::authorize('github');
 });

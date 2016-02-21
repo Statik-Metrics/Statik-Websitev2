@@ -3,15 +3,12 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Server;
 use Illuminate\Http\Request;
+use DB;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class UCPController extends Controller {
-
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+class ServerController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -20,7 +17,7 @@ class UCPController extends Controller {
 	 */
 	public function index()
 	{
-
+		//
 	}
 
 	/**
@@ -40,7 +37,25 @@ class UCPController extends Controller {
 	 */
 	public function store()
 	{
-		//
+		$json = Request::json();
+		try {
+			$entry = DB::table('servers')->where("uuid", $json->get('uuid'))->firstOrFail();
+		} catch (ModelNotFoundException $e) {
+			$entry = new Server();
+			$entry->uuid = $json->get('uuid');
+		}
+		$entry->javaVersion = $json->get('javaVersion');
+		$entry->systemOS = $json->get('systemOS');
+		$entry->systemArch = $json->get('systemArch');
+		$entry->systemCores = $json->get('systemCores');
+		$entry->systemMemory = $json->get('systemMemory');
+		$entry->serverMod = $json->get('serverMod');
+		$entry->serverMCVersion = $json->get('serverMCVersion');
+		$entry->serverCountry = $json->get('serverCountry');
+		$entry->serverOnline = $json->get('serverOnline');
+		$entry->playerCount = $json->get('playerCount');
+		$entry->save();
+		return Response::json(array('status' => 'OK'));
 	}
 
 	/**

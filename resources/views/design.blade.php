@@ -39,7 +39,14 @@
     </nav>
     <aside class="aside">
         <nav class="sidebar">
+
             <ul class="nav">
+                @if (!Auth::guest())
+                    <li>
+                        <div class="user-block"><div class="user-block-picture"><img src="//www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}" alt="Avatar" width="60" height="60" class="img-thumbnail img-circle"></div>
+                        <div class="user-block-info"><span class="user-block-name item-text">{{ Auth::user()->name }}</span></div></div>
+                    </li>
+                @endif
                 <li><a href="{{ url('/') }}" class="no-submenu"><em class="fa fa-home"></em><span class="item-text">Home</span></a></li>
                 <li><a href="{{ url('/about') }}" class="no-submenu"><em class="fa fa-info"></em><span class="item-text">About &amp; Download</span></a></li>
                 <li><a href="{{ url('/faq') }}" class="no-submenu"><em class="fa fa-question"></em><span class="item-text">FAQ</span></a></li>
